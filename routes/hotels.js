@@ -11,7 +11,7 @@ var { checkIfAuthorized, isAdmin } = require("./authMiddlewares")
 router.get('/', async function(req, res, next) {
   const hotels = await hotelService.get();
   const username = req.user?.username ?? 0;
-  res.render('hotels', { Hotels: hotels, user: req.user, username });
+  res.render('hotels', { hotels: hotels, user: req.user, username });
 });
 
 router.get('/:hotelId', async function(req, res, next) {
@@ -19,7 +19,7 @@ router.get('/:hotelId', async function(req, res, next) {
   const username = req.user?.username ?? 0;
   const hotel = await hotelService.getHotelDetails(req.params.hotelId, userId);
   console.log(hotel);
-  res.render('hotelDetails', { Hotel: hotel, userId, user: req.user, username });
+  res.render('hotelDetails', { hotel: hotel, userId, user: req.user, username });
 });
 
 router.post('/:hotelId/rate', checkIfAuthorized, jsonParser, async function(req, res, next) {
