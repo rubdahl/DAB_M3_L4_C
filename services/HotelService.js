@@ -7,7 +7,7 @@ class HotelService {
 
     //Create a hotel using raw SQL
     async create(name, location) {
-        sequelize.query('INSERT INTO hotels (Name, Location) VALUES (:Name, :Location)', {
+        sequelize.query('INSERT INTO Hotels (Name, Location) VALUES (:Name, :Location)', {
             replacements:
             {
                 Name: name,
